@@ -4,7 +4,7 @@ import (
 	"context"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"gwt"
+	"github.com/regod/gwt"
 	"time"
 )
 

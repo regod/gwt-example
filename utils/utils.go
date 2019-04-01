@@ -3,7 +3,7 @@ package utils
 import (
 	"context"
 	"go.mongodb.org/mongo-driver/mongo"
-	"gwt"
+	"github.com/regod/gwt"
 )
 
 func GetMongoCollection(ctx *gwt.Context, db_name string, collection_name string) (collection *mongo.Collection, mongoctx context.Context) {

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gwt"
+	"github.com/regod/gwt"
 	"gwt_example/middlewares"
 	"gwt_example/user"
 )

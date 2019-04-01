@@ -3,7 +3,7 @@ package user
 import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"gwt"
+	"github.com/regod/gwt"
 	"gwt_example/utils"
 )
 
@@ -39,7 +39,7 @@ func UpdatePhone(ctx *gwt.Context) error {
 	phone := ctx.PostForm().Get("phone")
 
 	user_objectid, _ := primitive.ObjectIDFromHex(userid)
-	res, err := collection.UpdateOne(mongoctx, bson.M{"_id": user_objectid}, bson.M{"$set": bson.M{"phone": phone}})
+	_, err := collection.UpdateOne(mongoctx, bson.M{"_id": user_objectid}, bson.M{"$set": bson.M{"phone": phone}})
 
 	var data RespData
 	if err == nil {

@@ -2,14 +2,14 @@ package utils
 
 import (
 	"context"
-	"go.mongodb.org/mongo-driver/mongo"
 	"github.com/regod/gwt"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func GetMongoCollection(ctx *gwt.Context, db_name string, collection_name string) (collection *mongo.Collection, mongoctx context.Context) {
+func GetMongoCollection(ctx *gwt.Context, dbName string, collectionName string) (collection *mongo.Collection, mongoctx context.Context) {
 	mongo := ctx.GetStore("mongo").(*mongo.Client)
 	mongoctx = ctx.GetStore("mongoctx").(context.Context)
-	db := mongo.Database(db_name)
-	collection = db.Collection(collection_name)
+	db := mongo.Database(dbName)
+	collection = db.Collection(collectionName)
 	return
 }

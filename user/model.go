@@ -10,20 +10,7 @@ type (
 		Name  string
 		Phone string
 	}
-
-	//UserModel struct {
-	//    user User
-	//    db_name string
-	//    collection_name string
-	//    collection *mongo.Collection
-	//    ctx context.Context
-	//}
 )
 
-const DB_NAME = "gwt_example"
-const COLLECTION_NAME = "user"
-
-//func (u *UserModel) Create(user User) error {
-//    _, err := u.collection.InsertOne(u.ctx, user)
-//    return err
-//}
+const DBName = "gwt_example"
+const CollectionName = "user"

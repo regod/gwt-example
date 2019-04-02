@@ -1,17 +1,17 @@
 package user
 
 import (
+	"github.com/regod/gwt"
+	"github.com/regod/gwt-example/utils"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"github.com/regod/gwt"
-	"gwt_example/utils"
 )
 
 // RespData return structure
 type RespData map[string]interface{}
 
 func Create(ctx *gwt.Context) error {
-	collection, mongoctx := utils.GetMongoCollection(ctx, DB_NAME, COLLECTION_NAME)
+	collection, mongoctx := utils.GetMongoCollection(ctx, DBName, CollectionName)
 	user := User{
 		Name:  ctx.PostForm().Get("name"),
 		Phone: ctx.PostForm().Get("phone"),
@@ -34,7 +34,7 @@ func Create(ctx *gwt.Context) error {
 }
 
 func UpdatePhone(ctx *gwt.Context) error {
-	collection, mongoctx := utils.GetMongoCollection(ctx, DB_NAME, COLLECTION_NAME)
+	collection, mongoctx := utils.GetMongoCollection(ctx, DBName, CollectionName)
 	userid := ctx.GetParam("id")
 	phone := ctx.PostForm().Get("phone")
 
@@ -59,7 +59,7 @@ func UpdatePhone(ctx *gwt.Context) error {
 }
 
 func List(ctx *gwt.Context) error {
-	collection, mongoctx := utils.GetMongoCollection(ctx, DB_NAME, COLLECTION_NAME)
+	collection, mongoctx := utils.GetMongoCollection(ctx, DBName, CollectionName)
 	var users []User
 	cursor, err := collection.Find(mongoctx, bson.D{})
 	var data RespData
@@ -86,7 +86,7 @@ func List(ctx *gwt.Context) error {
 }
 
 func Delete(ctx *gwt.Context) error {
-	collection, mongoctx := utils.GetMongoCollection(ctx, DB_NAME, COLLECTION_NAME)
+	collection, mongoctx := utils.GetMongoCollection(ctx, DBName, CollectionName)
 	userid := ctx.GetParam("id")
 	user_objectid, _ := primitive.ObjectIDFromHex(userid)
 	var data RespData

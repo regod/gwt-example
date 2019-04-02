@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/regod/gwt"
-	"gwt_example/middlewares"
-	"gwt_example/user"
+	"github.com/regod/gwt-example/middlewares"
+	"github.com/regod/gwt-example/user"
 )
 
 func main() {

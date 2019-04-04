@@ -8,10 +8,10 @@ import (
 func main() {
 	app := gwt.New()
 
-	app.AddRoute("/user/create/", user.Create, nil)
-	app.AddRoute("/user/update_phone/:id", user.UpdatePhone, nil)
-	app.AddRoute("/user/list/", user.List, nil)
-	app.AddRoute("/user/delete/:id", user.Delete, nil)
+	app.AddRoute("POST", "/user/create/", user.Create, nil)
+	app.AddRoute("POST", "/user/update_phone/:id", user.UpdatePhone, nil)
+	app.AddRoute("GET", "/user/list/", user.List, nil)
+	app.AddRoute("POST", "/user/delete/:id", user.Delete, nil)
 
 	app.Run(":9002")
 }

@@ -4,6 +4,7 @@ import (
 	"context"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+	"sync"
 	"time"
 )
 
@@ -22,10 +23,17 @@ func (c *MongoClient) Connect() {
 	}
 }
 
-func (c *MongoClient) DB(dbname string) *mongo.Database {
+func (c *MongoClient) InitClient() {
+	var m sync.Mutex
+	m.Lock()
+	defer m.Unlock()
 	if c.client == nil {
 		c.Connect()
 	}
+}
+
+func (c *MongoClient) DB(dbname string) *mongo.Database {
+	c.InitClient()
 	return c.client.Database(dbname)
 }
 

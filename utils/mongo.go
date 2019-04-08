@@ -14,6 +14,8 @@ type MongoClient struct {
 	client *mongo.Client
 }
 
+var clientMutex sync.Mutex
+
 func (c *MongoClient) Connect() {
 	c.Ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	var err error
@@ -24,9 +26,8 @@ func (c *MongoClient) Connect() {
 }
 
 func (c *MongoClient) InitClient() {
-	var m sync.Mutex
-	m.Lock()
-	defer m.Unlock()
+	clientMutex.Lock()
+	defer clientMutex.Unlock()
 	if c.client == nil {
 		c.Connect()
 	}
